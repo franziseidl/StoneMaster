@@ -61,7 +61,7 @@ namespace StoneMaster
 				{
 					Success = true,
 					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
-					Message = $"Storage test: '{ByteStingToString(json)}' Version 3"
+					Message = $"Storage test: '{ByteStringToString(json)}' Version 3"
 				};
 			}
 
@@ -81,8 +81,8 @@ namespace StoneMaster
 				return new StoneResult()
 				{
 					Success = false,
-					//Message = $"Stone not found {ByteStingToString(json)}"
-					Message = $"Stone not found"
+					Message = $"Stone not found {json.Length}"
+					//Message = $"Stone not found"
 				};
 			}
 			return new StoneResult
@@ -145,7 +145,7 @@ namespace StoneMaster
 			};
 		}
 
-		private string ByteStingToString(ByteString byteString)
+		private string ByteStringToString(ByteString byteString)
 		{
 			string value = "";
 			foreach (var ch in byteString)

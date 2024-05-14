@@ -97,11 +97,15 @@ namespace StoneMaster
 		{
 			var json = StdLib.JsonSerialize(stone);
 			Storage.Put(Storage.CurrentContext, stone.Name, json);
+			StorageMap storageMap =new StorageMap(Storage.CurrentContext, "StoneMaster");
+			storageMap.Put(stone.Name, json);
 		}
 
 		public Stone Get(string name)
 		{
 			var json = Storage.Get(Storage.CurrentContext, name);
+			StorageMap storageMap =new StorageMap(Storage.CurrentContext, "StoneMaster");
+			json = storageMap.Get(name);
 			if (json == null || json.Length == 0)
 			{
 				return null;

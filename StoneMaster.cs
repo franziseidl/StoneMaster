@@ -61,7 +61,7 @@ namespace StoneMaster
 				{
 					Success = true,
 					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
-					Message = $"Storage test: 'json' Version 1"
+					Message = $"Storage test: '{ByteStingToString(json)}' Version 2"
 				};
 			}
 

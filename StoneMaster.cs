@@ -148,7 +148,7 @@ namespace StoneMaster
 			string value = "";
 			foreach (var ch in byteString)
 			{
-				value+=$"-{ch.ToString()}";
+				value += (char)('\0' + ch);
 			}
 
 			if (value.Length == 0)

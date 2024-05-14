@@ -81,7 +81,8 @@ namespace StoneMaster
 				return new StoneResult()
 				{
 					Success = false,
-					Message = $"Stone not found {ByteStingToString(json)}"
+					//Message = $"Stone not found {ByteStingToString(json)}"
+					Message = $"Stone not found"
 				};
 			}
 			return new StoneResult

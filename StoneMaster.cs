@@ -81,7 +81,7 @@ namespace StoneMaster
 				return new StoneResult()
 				{
 					Success = false,
-					Message = $"Stone not found {json}"
+					Message = $"Stone not found {ByteStringToString(json)}"
 					//Message = $"Stone not found"
 				};
 			}
@@ -147,6 +147,13 @@ namespace StoneMaster
 
 		private string ByteStringToString(ByteString byteString)
 		{
+			if(byteString == null)
+			{
+				return "<null>";
+			} else if (byteString.Length == 0)
+			{
+				return "<empty>";
+			}
 			string value = "";
 			foreach (var ch in byteString)
 			{
@@ -155,7 +162,7 @@ namespace StoneMaster
 
 			if (value.Length == 0)
 			{
-				return "null";
+				return "<empty>";
 			}
 			return value;
 		}

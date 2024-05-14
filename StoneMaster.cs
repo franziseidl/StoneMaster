@@ -61,7 +61,8 @@ namespace StoneMaster
 				return new Result()
 				{
 					Success = true,
-					Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
+					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
+					Message = $"Storage test: {Storage.Get("stoneName")}"
 				};
 			}
 

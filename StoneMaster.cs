@@ -57,7 +57,7 @@ namespace StoneMaster
 					Owner = owner
 				};
 				Save(stone);
-				var json = StdLib.Serialize(stone);
+				var json = StdLib.JsonSerialize(stone);
 				return new Result()
 				{
 					Success = true,

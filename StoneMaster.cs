@@ -53,8 +53,7 @@ namespace StoneMaster
 			{
 				var stone = new Stone()
 				{
-					Name = stoneName,
-					Owner = owner
+					Name = stoneName
 				};
 				Save(stone);
 				var json = StdLib.JsonSerialize(stone);

@@ -94,11 +94,8 @@ namespace StoneMaster
 
 		private void Save(Stone stone)
 		{
-			var json = StdLib.Serialize(stone);
+			var json = StdLib.JsonSerialize(stone);
 			Storage.Put(Storage.CurrentContext, stone.Name, json);
-			var stringValue = Storage.Get(Storage.CurrentContext, "test");
-			Storage.Put("Test",stringValue+"1");
-			
 		}
 
 		public Stone Get(string name)
@@ -108,7 +105,7 @@ namespace StoneMaster
 			{
 				return null;
 			}
-			var stone = (Stone) StdLib.Deserialize(json);
+			var stone = (Stone) StdLib.JsonDeserialize(json);
 			return stone;
 		}
 
@@ -152,8 +149,7 @@ namespace StoneMaster
 			string value = "";
 			foreach (var ch in byteString)
 			{
-				char letter = (char)ch;
-				value+=$"-{letter}";
+				value+=$"-{ch}";
 			}
 
 			if (value.Length == 0)

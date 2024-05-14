@@ -56,12 +56,12 @@ namespace StoneMaster
 					Name = stoneName
 				};
 				Save(stone);
-				var json = StdLib.JsonSerialize(stone);
+				var json = Storage.Get(Storage.CurrentContext, stoneName);
 				return new Result()
 				{
 					Success = true,
 					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
-					Message = $"Storage test: '{ByteStingToString(json)}' Version 2"
+					Message = $"Storage test: '{ByteStingToString(json)}' Version 3"
 				};
 			}
 

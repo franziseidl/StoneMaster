@@ -77,10 +77,11 @@ namespace StoneMaster
 			var stone = Get(stoneName);
 			if(stone == null)
 			{
+				var json = Storage.Get(Storage.CurrentContext, stoneName);
 				return new StoneResult()
 				{
 					Success = false,
-					Message = "Stone not found"
+					Message = $"Stone not found {ByteStingToString(json)}"
 				};
 			}
 			return new StoneResult

@@ -57,7 +57,7 @@ namespace StoneMaster
 					Owner = owner
 				};
 				Save(stone);
-				var json = Storage.Get(Storage.CurrentContext, stoneName);
+				var json = StdLib.Serialize(stone);
 				return new Result()
 				{
 					Success = true,
@@ -152,7 +152,8 @@ namespace StoneMaster
 			string value = "";
 			foreach (var ch in byteString)
 			{
-				value+=$"-{ch}";
+				char letter = (char)ch;
+				value+=$"-{letter}";
 			}
 
 			if (value.Length == 0)

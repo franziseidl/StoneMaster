@@ -62,7 +62,7 @@ namespace StoneMaster
 				{
 					Success = true,
 					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
-					Message = $"Storage test: {Storage.Get("stoneName")}"
+					Message = $"Storage test: {ByteStingToString(json)}"
 				};
 			}
 
@@ -145,6 +145,21 @@ namespace StoneMaster
 				Success = false,
 				Message = $"Position added to Stone({stoneName})"
 			};
+		}
+
+		private string ByteStingToString(ByteString byteString)
+		{
+			string value = "";
+			foreach (var ch in byteString)
+			{
+				value+=ch;
+			}
+
+			if (value.Length == 0)
+			{
+				return "null";
+			}
+			return value;
 		}
 	}
 	

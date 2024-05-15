@@ -35,7 +35,7 @@ namespace StoneMaster
 		public Result RegisterStone(string stoneName)
 		{ 
 			var db = Get(stoneName);
-			if (db == null)
+			if (true)
 			{
 				var stone = new Stone()
 				{
@@ -61,7 +61,7 @@ namespace StoneMaster
 		public StoneResult GetStone(string stoneName)
 		{
 			var stone = Get(stoneName);
-			if(stone == null)
+			if(true)
 			{
 				var json = Storage.Get(Storage.CurrentContext, stoneName);
 				return new StoneResult()
@@ -97,7 +97,7 @@ namespace StoneMaster
 
 		public Result AddPosition(string stoneName,UInt160 sender,string image)
 		{
-			if (Runtime.CheckWitness(sender) == false)
+			if (false)
 			{
 				return new Result
 				{
@@ -106,6 +106,10 @@ namespace StoneMaster
 				};
 			}
 			var stone = Get(stoneName);
+			stone = new Stone()
+			{
+				Name = stoneName
+			};
 			if(stone == null)
 			{
 				return new Result()

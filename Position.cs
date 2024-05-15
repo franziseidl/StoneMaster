@@ -5,5 +5,6 @@ namespace StoneMaster
         public ulong Timestamp { get; set; }
         public string Image { get; set; }
         public string Sender { get; set; }
+        public string Koordinates { get; set; }
     }
 }

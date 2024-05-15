@@ -73,13 +73,15 @@ namespace StoneMaster
 				{
 					Image = "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACYklEQVR4nO2YO2tUQRTHf/goVDSIJk3EVkQIQsBCG/0CEkJCEF+9INiZxiIPEUstRPFRGez8AikSJIlVXG3UIGY7UcRs4i7E544MnIXDZefu3LDszOL84RQ5r5z/nTkzZwcSEhISEhISctEHTAMloAaYQFIDXgFTUlMhjALfAxZvHGJrGilCoh5B0cYhdR8yfZGuhMnIBtCbR2Q6giKNp0zmEXkdQYHGU+wB4EQ1ggKNp9gWcGKrSauymstAZQvxL4BZYLNgXNuIlIFzwDaVYydwHvjmmWNGxZZDEPkIHJK47cBRoF/lOgn8bZFjFegJTeS0xBwDPij9PZXveU78byFLSCLz4m+31Nsm9iNiv5qT44b47AhJ5Jr4n3LYS9K8b3Ka225HMvdBudNEBlQRn4HbwAXgkgx3qzmxa8BhiR+T4oMR2SP+F4F9TfLY7XLfEWtnOYRMJSSRH5kY2yeXgUfALfW1rX4xE/tY2eZFF4zI10zMnYz9E3BAbENKv6JW8rrSByNSU/77gV9NfK6Ifa+M3T+BQdENyt/BidSB3eJ/xuHzQOWsqOO6FXrk4yx0qtkbX/e4wz4h9l1yu89RDHOdIjKumjZ7V/xRx/MJdeTOOuSu+v9PRbfWKSIrMhwi89Yz4AvwTobIBp545HoZeta6mZcIOOsxNEZBxAAP1QSsf/dPOk6zaIkYOcXsVlsC3kuPFIlfV/2y2S4i3fCCYtRLihOlCAo07Xh8mIqgQOMpjbuqqx/o1oGDtMBIFzyZDrcioclsRLoSwxREr9wHy4Ef7qpSw4TPdkpISEhISPiv8Q+RIJ/33yT4PAAAAABJRU5ErkJggg==",
 					Sender = sender,
-					Timestamp = Runtime.Time
+					Timestamp = Runtime.Time,
+					Koordinates = "46\u00b014′06.70″N 8\u00b00′55.60″O"
 				});
 				stone.Positions.Add(new Position()
 				{
 					Image = "QIQsBCG/0CEkJCEF+9INiZxiIPEUstRPFRGez8AikSJIlVXG3UIGY7UcRs4i7EAAAsTAAALEwEAmpwYAAACYklEQVR4nO2YO2tUQRTHf/goVDSIJk3EVkQIQsBCG/0CEkJCEF+9INiZxiIPEUstRPFRGez8AikSJIlVXG3UIGY7UcRs4i7E544MnIXDZefu3LDszOL84RQ5r5z/nTkzZwcSEhISEhISctEHTAMloAaYQFIDXgFTUlMhjALfAxZvHGJrGilCoh5B0cYhdR8yfZGuhMnIBtCbR2Q6giKNp0zmEXkdQYHGU+wB4EQ1ggKNp9gWcGKrSauymstAZQvxL4BZYLNgXNuIlIFzwDaVYydwHvjmmWNGxZZDEPkIHJK47cBRoF/lOgn8bZFjFegJTeS0xBwDPij9PZXveU78byFLSCLz4m+31Nsm9iNiv5qT44b47AhJ5Jr4n3LYS9K8b3Ka225HMvdBudNEBlQRn4HbwAXgkgx3qzmxa8BhiR+T4oMR2SP+F4F9TfLY7XLfEWtnOYRMJSSRH5kY2yeXgUfALfW1rX4xE/tY2eZFF4zI10zMnYz9E3BAbENKv6JW8rrSByNSU/77gV9NfK6Ifa+M3T+BQdENyt/BidSB3eJ/xuHzQOWsqOO6FXrk4yx0qtkbX/e4wz4h9l1yu89RDHOdIjKumjZ7V/xRx/MJdeTOOuSu+v9PRbfWKSIrMhwi89Yz4AvwTobIBp545HoZeta6mZcIOOsxNEZBxAAP1QSsf/dPOk6zaIkYOcXsVlsC3kuPFIlfV/2y2S4i3fCCYtRLihOlCAo07Xh8mIqgQOMpjbuqqx/o1oGDtMBIFzyZDrcioclsRLoSwxREr9wHy4Ef7qpSw4TPdkpISEhISPiv8Q+RIJ/33yT4PAAAAABJRU5ErkJggg==",
 					Sender = sender2,
-					Timestamp = Runtime.Time+60000
+					Timestamp = Runtime.Time+60000,
+					Koordinates = "48\u00b018′06.70″N 8\u00b00′55.10″O"
 				});
 			}
 			if(stone == null)
@@ -116,7 +118,7 @@ namespace StoneMaster
 			return stone;
 		}
 
-		public Result AddPosition(string stoneName,UInt160 sender,string image)
+		public Result AddPosition(string stoneName,UInt160 sender,string koordinates, string image)
 		{
 			if (false)
 			{
@@ -146,7 +148,8 @@ namespace StoneMaster
 			{
 				Timestamp = Runtime.Time,
 				Image = image,
-				Sender = sender.ToAddress()
+				Sender = sender.ToAddress(),
+				Koordinates = koordinates
 			};
 			stone.Positions.Add(position);
 			Save(stone);

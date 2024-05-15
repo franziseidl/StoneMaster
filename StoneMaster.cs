@@ -23,7 +23,7 @@ namespace StoneMaster
 		
 		public static void Update(ByteString nefFile, string manifest)
 		{
-			if (false) throw new Exception("No authorization.");
+			if (IsOwner()) throw new Exception("No authorization.");
 			ContractManagement.Update(nefFile, manifest, null);
 		}
 		public static void Destroy()
@@ -32,22 +32,8 @@ namespace StoneMaster
 			ContractManagement.Destroy();
 		}
 		
-		public Result RegisterStone(string stoneName, UInt160 owner)
-		{
-			if (false)
-			{
-				string msg = "Invalid owner\r\n";
-				msg += $"owner = {owner.ToAddress()}\r\n";
-				msg += $"Contract owner = {Owner.ToAddress()}\r\n";
-				msg += $"Calling script hash = {Runtime.CallingScriptHash.ToAddress()}\r\n";
-				msg += $"Execution script hash = {Runtime.ExecutingScriptHash.ToAddress()}\r\n"; ;
-				msg += $"Entry script hash = {Runtime.EntryScriptHash.ToAddress()}\r\n";
-				return new Result()
-				{
-					Success = false,
-					Message = msg
-				};
-			}
+		public Result RegisterStone(string stoneName)
+		{ 
 			var db = Get(stoneName);
 			if (db == null)
 			{
@@ -111,7 +97,7 @@ namespace StoneMaster
 
 		public Result AddPosition(string stoneName,UInt160 sender,string image)
 		{
-			if (false)
+			if (Runtime.CheckWitness(sender) == false)
 			{
 				return new Result
 				{

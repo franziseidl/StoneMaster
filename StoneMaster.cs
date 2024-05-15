@@ -58,18 +58,18 @@ namespace StoneMaster
 				};
 				Save(stone);
 				var json = Storage.Get(Storage.CurrentContext, stoneName);
-				Runtime.Log($"Stone({stone.Name},'{ByteStringToString(json)}') registered successfully");
+				Runtime.Log($"Stone registered successfully");
 				return new Result()
 				{
 					Success = true,
-					Message = $"Stone({stone.Name}) registered successfully"
+					Message = "Stone registered successfully"
 				};
 			}
 
 			return new Result()
 			{
 				Success = false,
-				Message = $"Stone with already exists"
+				Message = "Stone with already exists"
 			};
 		}
 
@@ -82,7 +82,7 @@ namespace StoneMaster
 				return new StoneResult()
 				{
 					Success = false,
-					Message = $"Stone not found"
+					Message = "Stone not found"
 				};
 			}
 			return new StoneResult
@@ -126,7 +126,7 @@ namespace StoneMaster
 				return new Result()
 				{
 					Success = false,
-					Message = $"Stone({stoneName}) not found"
+					Message = "Stone not found"
 				};
 			}
 			var position = new Position()
@@ -141,7 +141,7 @@ namespace StoneMaster
 			return new Result()
 			{
 				Success = false,
-				Message = $"Position added to Stone({stoneName})"
+				Message = "Position added to Stone"
 			};
 		}
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Security.Cryptography.X509Certificates;
 using Neo;
 using Neo.SmartContract;
 using Neo.SmartContract.Framework;

@@ -54,7 +54,7 @@ namespace StoneMaster
 			return new Result()
 			{
 				Success = false,
-				Message = "Stone with already exists"
+				Message = "Stone already exists"
 			};
 		}
 

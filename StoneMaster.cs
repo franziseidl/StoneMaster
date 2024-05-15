@@ -127,10 +127,13 @@ namespace StoneMaster
 				};
 			}
 			var stone = Get(stoneName);
-			stone = new Stone()
+			if (stoneName == "test")
 			{
-				Name = stoneName
-			};
+				stone = new Stone()
+				{
+					Name = stoneName
+				};
+			}
 			if(stone == null)
 			{
 				return new Result()
@@ -143,7 +146,7 @@ namespace StoneMaster
 			{
 				Timestamp = Runtime.Time,
 				Image = image,
-				Sender = sender
+				Sender = sender.ToAddress()
 			};
 			stone.Positions.Add(position);
 			Save(stone);

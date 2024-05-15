@@ -82,7 +82,7 @@ namespace StoneMaster
 					Timestamp = Runtime.Time+60000
 				});
 			}
-			if(true)
+			if(stone == null)
 			{
 				var json = Storage.Get(Storage.CurrentContext, stoneName);
 				return new StoneResult()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 using Neo;
 using Neo.SmartContract;
 using Neo.SmartContract.Framework;
@@ -57,18 +58,18 @@ namespace StoneMaster
 				};
 				Save(stone);
 				var json = Storage.Get(Storage.CurrentContext, stoneName);
+				Runtime.Log($"Stone({stone.Name},'{ByteStringToString(json)}') registered successfully");
 				return new Result()
 				{
 					Success = true,
-					//Message = $"Stone({stone.Name},'{json}') registered successfully - Version 125"
-					Message = $"Storage test: '{ByteStringToString(json)}' Version 3"
+					Message = $"Stone({stone.Name}) registered successfully"
 				};
 			}
 
 			return new Result()
 			{
 				Success = false,
-				Message = $"Stone with that {stoneName} already exists"
+				Message = $"Stone with already exists"
 			};
 		}
 
@@ -81,8 +82,7 @@ namespace StoneMaster
 				return new StoneResult()
 				{
 					Success = false,
-					Message = $"Stone not found ({stoneName}){ByteStringToString(json)}"
-					//Message = $"Stone not found"
+					Message = $"Stone not found"
 				};
 			}
 			return new StoneResult
@@ -97,15 +97,11 @@ namespace StoneMaster
 		{
 			var json = StdLib.JsonSerialize(stone);
 			Storage.Put(Storage.CurrentContext, stone.Name, json);
-			StorageMap storageMap =new StorageMap(Storage.CurrentContext, "StoneMaster");
-			storageMap.Put(stone.Name, json);
 		}
 
 		public Stone Get(string name)
 		{
 			var json = Storage.Get(Storage.CurrentContext, name);
-			StorageMap storageMap =new StorageMap(Storage.CurrentContext, "StoneMaster");
-			json = storageMap.Get(name);
 			if (json == null || json.Length == 0)
 			{
 				return null;
